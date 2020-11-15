@@ -8,6 +8,7 @@ import (
 )
 
 // Name struct is name of lines
+// TODO: modify name struct with strings of only 20 charaters in length
 type Name struct {
 	//  fname [20]rune
 	fname string
@@ -37,7 +38,7 @@ func main() {
 		lname := strings.ReplaceAll(actualLine[1], "\r\n", "")
 		sliceOfName = append(sliceOfName, Name{fname, lname})
 	}
-	
+
 	for _, n := range sliceOfName {
 		fmt.Println("First name: " + n.fname + " Last name: " + n.lname)
 	}
