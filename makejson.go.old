@@ -1,0 +1,30 @@
+package main
+
+import (
+	"bufio"
+	"encoding/json"
+	"fmt"
+	"os"
+	"strings"
+)
+
+func main() {
+	Person := make(map[string]string)
+
+	name := bufio.NewReader(os.Stdin)
+	fmt.Println("Enter a name:")
+	fmt.Scanln(&name)
+	fullName, _ := name.ReadString('\n')
+	Person["name"] = strings.ReplaceAll(fullName, "\r\n", "")
+
+	adress := bufio.NewReader(os.Stdin)
+	fmt.Println("Enter an adress:")
+	fmt.Scan(&adress)
+	fullAdress, _ := adress.ReadString('\n')
+	Person["adress"] = strings.ReplaceAll(fullAdress, "\r\n", "")
+
+	jsonPerson, err := json.Marshal(Person)
+	if err == nil {
+		fmt.Println(string(jsonPerson))
+	}
+}

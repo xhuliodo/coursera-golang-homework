@@ -1,0 +1,40 @@
+package main
+
+import (
+	"fmt"
+)
+
+var intSlice = make([]int, 3)
+var sortedSlice = []int{0}
+
+func main() {
+	var userInput int
+	fmt.Println("Enter a number and get a sorted list or 'X' to exit the loop")
+	for len(intSlice) > len(sortedSlice) {
+		_, err := fmt.Scan(&userInput)
+		if err != nil {
+			fmt.Print("That's it folks")
+			break
+		}
+		if len(intSlice) == 3 {
+			sortedSlice[0] = userInput
+		} else {
+			for i, currentValue := range sortedSlice {
+				if userInput < currentValue {
+					sortedSlice = append(sortedSlice, 0)
+					copy(sortedSlice[i+1:], sortedSlice[i:])
+					sortedSlice[i] = userInput
+					break
+				}
+				if userInput > currentValue && i+1 == len(sortedSlice) {
+					sortedSlice = append(sortedSlice, userInput)
+				}
+			}
+		}
+		// extend the loop
+		intSlice = append(intSlice, 1)
+
+		fmt.Println("this is the slice so far", sortedSlice)
+	}
+
+}
