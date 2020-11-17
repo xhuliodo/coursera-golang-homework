@@ -7,7 +7,6 @@ import (
 	"strings"
 )
 
-// Name struct is name of lines
 type Name struct {
 	fname [20]rune
 	lname [20]rune
@@ -16,6 +15,8 @@ type Name struct {
 var sliceOfName = make([]Name, 0)
 
 func main() {
+	fmt.Println("enter the name of the text file you want to open:")
+
 	var fileName string
 	fmt.Scan(&fileName)
 
